@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+  mysql:
+    container_name: mysql_db
+    image: mysql:8
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: university
+      MYSQL_ROOT_PASSWORD: local
+    volumes:
+      - ./init/mysql:/docker-entrypoint-initdb.d
+  postgres:
+    image: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: university
+      POSTGRES_PASSWORD: example
+    volumes:
+      - ./init/postgress/dump:/tmp/dump
+      - ./init/postgress/script:/docker-entrypoint-initdb.d

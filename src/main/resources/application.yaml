@@ -1,0 +1,20 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /spring-batch-db-migration
+
+spring:
+  datasource:
+    jdbc-url: jdbc:mysql://localhost:3306/university
+    username: root
+    password: local
+
+  postgresdatasource:
+    jdbc-url: jdbc:postgresql://localhost:5432/university
+    username: postgres
+    password: example
+
+
+  batch:
+    jdbc:
+      initialize-schema: always
